@@ -1,0 +1,29 @@
+
+1. ¿Cuál es el nombre y la superficie terrestre de cada continente? 
+
+SELECT name, area FROM continent;
+
+
+
+2. ¿Cuál es la superficie y la profundidad del lago Malawi? 
+
+SELECT name, depth, area  FROM lake WHERE name LIKE '%Malawi%';
+
+
+
+3. ¿Cuáles son los nombres y la superficie de todos los lagos en orden decreciente de profundidad?
+
+SELECT name, area, depth  FROM lake WHERE depth IS NOT NULL ORDER BY depth DESC;
+
+
+
+4. ¿Cuál es el nombre de los países donde la agricultura representa al menos el 50% del producto interno 
+bruto? -- use INNER JOIN ... ON 
+
+SELECT C.name, E.agriculture FROM country C INNER JOIN economy E ON E.country = C.code WHERE E.agriculture >= 50;
+
+
+
+5. ¿Cómo se llama el río más largo? -- use una subconsulta 
+
+SELECT name FROM river WHERE length = (SELECT MAX(length) FROM river);
